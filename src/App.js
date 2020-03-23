@@ -23,7 +23,7 @@ function millisecondsToStr(min, workingHours, forceMinutes) {
   var seconds = temp % 60;
 
   if (forceMinutes) {
-    return `${min} minute${numberEnding(min)}`;
+    return `${round(min)} minute${numberEnding(min)}`;
   }
   if (hours >= 1) {
     if (hours > workingHours) {
@@ -50,6 +50,11 @@ export default function App() {
 
   const dailyTravelTime = travelTime * 2;
   const totalMinutes = dailyTravelTime * workingDays * 47;
+  const shareText = `Because i'm working remote i'm saving ${millisecondsToStr(
+    dailyTravelTime * workingDays,
+    workingHours,
+    true
+  )} of commute time per month`;
 
   return (
     <div className="App">
@@ -232,9 +237,35 @@ export default function App() {
               </dd>
               <dt>Make this site (15 hours)</dt>
               <dd>{Math.floor(totalMinutes / 900)} times</dd>
-              <dt>Play Mario Kart 8 Deluxe (2.5 minutes) </dt>
-              <dd>±{Math.floor(totalMinutes / 2.5)} laps</dd>
+              <dt>Play Mario Kart 8 Deluxe (1 minute, 10 seconds per lap) </dt>
+              <dd>±{Math.floor(totalMinutes / 1.15)} laps</dd>
             </dl>
+          </div>
+        </div>
+      </div>
+      <div className="conclusion">
+        <div className="sizer">
+          <h2>Share your times:</h2>
+          <div className="card">
+            <p className="share-preview">
+              <em>Preview:</em> {shareText}
+            </p>
+            <a
+              href={`https://twitter.com/share?text=${encodeURI(
+                shareText
+              )})}&url=${encodeURI(
+                "https://commuteless.app"
+              )}&hashtags=commuteless&related=mettinparzinski`}
+              class="twitter-share-button"
+              data-show-count="true"
+            >
+              Tweet
+            </a>
+            <script
+              async
+              src="https://platform.twitter.com/widgets.js"
+              charset="utf-8"
+            />
           </div>
         </div>
       </div>
