@@ -13,7 +13,13 @@ const numberEnding = number => (Math.floor(number) !== 1 ? "s" : "");
 
 const round = n => Math.round(n * 10) / 10;
 
-function millisecondsToStr(min, workingHours, forceMinutes) {
+function millisecondsToStr(
+  min,
+  workingHours,
+  forceMinutes,
+  forceHours,
+  forceCompleteDays
+) {
   const milliseconds = min * SECONDS_IN_A_MINUTE * MS_IN_A_SECOND;
 
   var temp = Math.floor(milliseconds / 1000);
@@ -22,6 +28,14 @@ function millisecondsToStr(min, workingHours, forceMinutes) {
   var minutes = (temp %= 3600) / 60;
   var seconds = temp % 60;
 
+  if (forceCompleteDays) {
+    return (
+      round(Math.round(hours / 24)) + " complete 24h day" + numberEnding(hours)
+    );
+  }
+  if (forceHours) {
+    return round(hours) + " hour" + numberEnding(hours);
+  }
   if (forceMinutes) {
     return `${round(min)} minute${numberEnding(min)}`;
   }
@@ -58,7 +72,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>Commuteless: How much time do you save by working&nbsp;remote?</h1>
+      <h1>
+        <span role="img" aria-label="racecar icon">
+          🏎
+        </span>{" "}
+        Commuteless: How much time do you save by working&nbsp;remote?
+      </h1>
       <main>
         <div className="sizer main-content">
           <form>
@@ -139,16 +158,7 @@ export default function App() {
           </form>
 
           <div className="blocks">
-            <h2>
-              Remote work will save you{" "}
-              {millisecondsToStr(
-                dailyTravelTime *
-                  workingDays *
-                  (WEEKS_IN_A_YEAR - vacationDays / workingDays),
-                workingHours,
-                true
-              )}
-            </h2>
+            <h2>Remote work will save you</h2>
             <div className="block card">
               <h3>Weekly:</h3>
               <dl>
@@ -203,6 +213,39 @@ export default function App() {
                     workingHours
                   )}{" "}
                   a year
+                </dd>
+                <dt>Thats a total of:</dt>
+                <dd>
+                  {millisecondsToStr(
+                    dailyTravelTime *
+                      workingDays *
+                      (WEEKS_IN_A_YEAR - vacationDays / workingDays),
+                    workingHours,
+                    true
+                  )}{" "}
+                  or
+                </dd>
+                <dd>
+                  {millisecondsToStr(
+                    dailyTravelTime *
+                      workingDays *
+                      (WEEKS_IN_A_YEAR - vacationDays / workingDays),
+                    workingHours,
+                    false,
+                    true
+                  )}{" "}
+                  or
+                </dd>
+                <dd>
+                  {millisecondsToStr(
+                    dailyTravelTime *
+                      workingDays *
+                      (WEEKS_IN_A_YEAR - vacationDays / workingDays),
+                    workingHours,
+                    false,
+                    false,
+                    true
+                  )}
                 </dd>
               </dl>
             </div>

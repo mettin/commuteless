@@ -68,6 +68,12 @@ h2 {
   padding: 5px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.input-group:first-child {
+  padding-top: 0;
+}
+.input-group:last-child {
+  padding-bottom: 0;
+}
 
 @media (min-width: 800px) {
   .input-group {
@@ -194,12 +200,8 @@ dt {
 .conclusion dl {
   margin-top: 0;
 }
-.conclusion dt + dd {
-  margin-bottom: 8px;
-}
-
-.conclusion dt + dd:last-child {
-  margin-bottom: 0;
+dd + dt {
+  margin-top: 8px;
 }
 
 .share-preview {
