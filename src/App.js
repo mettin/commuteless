@@ -13,7 +13,7 @@ const numberEnding = number => (Math.floor(number) !== 1 ? "s" : "");
 
 const round = n => Math.round(n * 10) / 10;
 
-function millisecondsToStr(min, workingHours) {
+function millisecondsToStr(min, workingHours, forceMinutes) {
   const milliseconds = min * SECONDS_IN_A_MINUTE * MS_IN_A_SECOND;
 
   var temp = Math.floor(milliseconds / 1000);
@@ -22,6 +22,9 @@ function millisecondsToStr(min, workingHours) {
   var minutes = (temp %= 3600) / 60;
   var seconds = temp % 60;
 
+  if (forceMinutes) {
+    return `${min} minute${numberEnding(min)}`;
+  }
   if (hours >= 1) {
     if (hours > workingHours) {
       return `${round(hours / workingHours)} business day${numberEnding(
@@ -131,7 +134,16 @@ export default function App() {
           </form>
 
           <div className="blocks">
-            <h2>Remote work will save you</h2>
+            <h2>
+              Remote work will save you{" "}
+              {millisecondsToStr(
+                dailyTravelTime *
+                  workingDays *
+                  (WEEKS_IN_A_YEAR - vacationDays / workingDays),
+                workingHours,
+                true
+              )}
+            </h2>
             <div className="block card">
               <h3>Weekly:</h3>
               <dl>
@@ -197,19 +209,19 @@ export default function App() {
           <h2>In this time, annually you can:</h2>
           <div className="card">
             <dl>
-              <dt>Wash your hands (2 minutes)</dt>
+              <dt>Wash and dry your hands (2 minutes)</dt>
               <dd>
                 {Math.floor(totalMinutes / 2)} time
                 {numberEnding(Math.floor(totalMinutes / 2))}
               </dd>
-              <dt>Play Monopoly (90 min games)</dt>
+              <dt>Play Monopoly (90 min)</dt>
               <dd>
-                {Math.floor(totalMinutes / 90)} time
+                {Math.floor(totalMinutes / 90)} game
                 {numberEnding(Math.floor(totalMinutes / 90))}
               </dd>
-              <dt>Make a lasagne</dt>
+              <dt>Make a lasagne (45 min)</dt>
               <dd>
-                {Math.floor(totalMinutes / 60)} time
+                {Math.floor(totalMinutes / 60)} lasagne
                 {numberEnding(Math.floor(totalMinutes / 60))}
               </dd>
               <dt>Water your plants (10 min)</dt>
@@ -220,6 +232,8 @@ export default function App() {
               </dd>
               <dt>Make this site (15 hours)</dt>
               <dd>{Math.floor(totalMinutes / 900)} times</dd>
+              <dt>Play Mario Kart 8 Deluxe (2.5 minutes) </dt>
+              <dd>±{Math.floor(totalMinutes / 2.5)} laps</dd>
             </dl>
           </div>
         </div>
