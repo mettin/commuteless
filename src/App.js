@@ -253,7 +253,7 @@ export default function App() {
             <a
               href={`https://twitter.com/share?text=${encodeURI(
                 shareText
-              )})}&url=${encodeURI(
+              )}&url=${encodeURI(
                 "https://commuteless.app"
               )}&hashtags=commuteless&related=mettinparzinski`}
               class="twitter-share-button"
