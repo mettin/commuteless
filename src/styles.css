@@ -222,6 +222,17 @@ dd + dt {
 .twitter-share-button:active {
   background: #1dcaff;
 }
+.secondary {
+  color: #999;
+  text-align: right;
+}
+.secondary a {
+  color: #000;
+}
+.secondary a:hover,
+.secondary a:focus {
+  text-decoration: none;
+}
 
 footer {
   padding: 0 0 16px;

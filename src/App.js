@@ -267,7 +267,7 @@ export default function App() {
                 {Math.floor(totalMinutes / 90)} game
                 {numberEnding(Math.floor(totalMinutes / 90))}
               </dd>
-              <dt>Take a run (10Km/h or 6.2Mph)</dt>
+              <dt>Take a stroll (10Km/h or 6.2Mph)</dt>
               <dd>{Math.floor(totalMinutes / 6)}KM</dd>
               <dt>Make a lasagne (45 min)</dt>
               <dd>
@@ -286,6 +286,10 @@ export default function App() {
               <dd>±{Math.floor(totalMinutes / 1.15)} laps</dd>
             </dl>
           </div>
+          <p className="secondary">
+            Missing your activity? Let me know{" "}
+            <a href="https://twitter.com/mettinparzinski">on Twitter</a>
+          </p>
         </div>
       </div>
       <div className="conclusion">
