@@ -267,7 +267,7 @@ export default function App() {
                 {Math.floor(totalMinutes / 90)} game
                 {numberEnding(Math.floor(totalMinutes / 90))}
               </dd>
-              <dt>Take a stroll (10Km/h or 6.2Mph)</dt>
+              <dt>Take a run (10Km/h or 6.2Mph)</dt>
               <dd>{Math.floor(totalMinutes / 6)}KM</dd>
               <dt>Make a lasagne (45 min)</dt>
               <dd>
