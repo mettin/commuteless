@@ -112,8 +112,17 @@ input {
   flex: 1;
 }
 .input-group .value {
-  width: 32px;
+  max-width: 32px;
   text-align: right;
+  padding: 4px;
+  margin-left: 8px;
+  text-align: right;
+  font-size: 16px;
+  -webkit-appearance: none;
+  border: 1px solid #ddd;
+}
+.value::-webkit-inner-spin-button {
+  display: none;
 }
 
 .blocks {

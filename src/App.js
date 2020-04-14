@@ -98,7 +98,14 @@ export default function App() {
                   value={workingHours}
                   onChange={e => setWorkingHours(e.target.value)}
                 />
-                <span className="value">{workingHours}</span>
+                <input
+                  className="value"
+                  value={workingHours}
+                  type="number"
+                  min="1"
+                  max="24"
+                  onChange={e => setWorkingHours(e.target.value)}
+                />
               </div>
 
               <div className="input-group">
@@ -116,7 +123,14 @@ export default function App() {
                   value={workingDays}
                   onChange={e => setWorkingDays(e.target.value)}
                 />
-                <span className="value">{workingDays}</span>
+                <input
+                  className="value"
+                  min="1"
+                  max="7"
+                  type="number"
+                  value={workingDays}
+                  onChange={e => setWorkingDays(e.target.value)}
+                />
               </div>
 
               <div className="input-group">
@@ -134,7 +148,14 @@ export default function App() {
                   value={travelTime}
                   onChange={e => setTravelTime(e.target.value)}
                 />
-                <span className="value">{travelTime}</span>
+                <input
+                  className="value"
+                  min="1"
+                  max="180"
+                  type="number"
+                  value={travelTime}
+                  onChange={e => setTravelTime(e.target.value)}
+                />
               </div>
 
               <div className="input-group">
@@ -152,7 +173,14 @@ export default function App() {
                   value={vacationDays}
                   onChange={e => setVacationDays(e.target.value)}
                 />
-                <span className="value">{vacationDays}</span>
+                <input
+                  className="value"
+                  min="0"
+                  max="99"
+                  type="number"
+                  value={vacationDays}
+                  onChange={e => setVacationDays(e.target.value)}
+                />
               </div>
             </div>
           </form>
