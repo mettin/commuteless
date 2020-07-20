@@ -63,7 +63,7 @@ export default function App() {
   const [vacationDays, setVacationDays] = useState(25);
 
   const dailyTravelTime = travelTime * 2;
-  const totalMinutes = dailyTravelTime * workingDays * 47;
+  const totalMinutes = dailyTravelTime * workingDays * (52 - vacationDays / workingDays);
   const shareText = `Because i'm working remote i'm saving ${millisecondsToStr(
     dailyTravelTime * workingDays,
     workingHours,
