@@ -64,11 +64,11 @@ export default function App() {
 
   const dailyTravelTime = travelTime * 2;
   const totalMinutes = dailyTravelTime * workingDays * (52 - vacationDays / workingDays);
-  const shareText = `Because i'm working remote i'm saving ${millisecondsToStr(
+  const shareText = `Because I'm working remote I'm saving ${millisecondsToStr(
     dailyTravelTime * workingDays,
     workingHours,
     true
-  )} of commute time per month`;
+  )} of commute time per week`;
 
   return (
     <div className="App">
